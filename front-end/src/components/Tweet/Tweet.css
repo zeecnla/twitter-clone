@@ -1,0 +1,15 @@
+
+.tweet {
+    border: 1px solid #fff;
+    width:100%;
+    display: grid;
+    grid-template-columns: 100px auto;
+}
+.tweet__body {
+    display: flex;
+    flex-direction: column;
+}
+.tweet__message {
+}
+.tweet__actions {
+}

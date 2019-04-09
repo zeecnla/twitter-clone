@@ -1,0 +1,21 @@
+{
+  "name": "twitter-clone-backend",
+  "version": "1.0.0",
+  "description": "The backend for my twitter clone",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon -r esm server.js"
+  },
+  "author": "cesar melchor",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "esm": "^3.2.22",
+    "express": "^4.16.4",
+    "mongoose": "^5.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}
