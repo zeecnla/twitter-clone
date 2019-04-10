@@ -32,10 +32,11 @@ router.get('/tweets', (req,res) => {
     });
 });
 router.get('/tweets/:id', (req,res)=> {
-    console.log(res);
     if(!req.params.id){
         return res.status(400).send('Param Id is missing');
     }
+
+    const id = req.params.id;
     TweetModel.findById(id, (error, tweet)=>{
         if(!tweet){
             return res.status(500).send(tweet);
@@ -48,8 +49,36 @@ router.get('/tweets/:id', (req,res)=> {
 
 });
 
-router.get('/tweets/:id/like', (req,res)=> {
+router.get('/tweets/like/:id', (req,res)=> {
+    if(!req.params.id){
+        return res.status(400).send('Param Id is missing');
+    }
+ 
+    const id = req.params.id;
+    TweetModel.findByIdAndUpdate(id, {
+        $inc: { likes: 1 } 
+    }, { new:true }, (error, tweet)=>{
+        if(!tweet){
+            return res.status(500).send(tweet);
+        }
+        return res.status(200).send(tweet);
+    });
+});
 
+router.get('/tweets/retweet/:id', (req,res)=> {
+    if(!req.params.id){
+        return res.status(400).send('Param Id is missing');
+    }
+ 
+    const id = req.params.id;
+    TweetModel.findByIdAndUpdate(id, {
+        $inc: { retweets: 1 } 
+    }, { new:true }, (error, tweet)=>{
+        if(!tweet){
+            return res.status(500).send(tweet);
+        }
+        return res.status(200).send(tweet);
+    });
 });
 
 module.exports = router;
