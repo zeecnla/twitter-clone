@@ -2,16 +2,17 @@
 const express = require('express');
 const app = express();
 const tweetRoute = require('./src/routes/tweet');
+const userRoute = require('./src/routes/user');
 const path = require('path');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+
 const { server, database, user, password } = require('./lib/keys');
 mongoose.connect(`mongodb+srv://${user}:${password}@${server}/${database}`);
 
-
-
 app.use(bodyParser.json());
 app.use(tweetRoute);
+app.use(userRoute);
 app.use(express.static('public'));
 
 //404 requests
