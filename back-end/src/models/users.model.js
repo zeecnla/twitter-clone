@@ -2,8 +2,10 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const SALT = 10;
 let UserSchema = new mongoose.Schema({
-    username: { type: String, required:true, lowercase: true},
-    email: { type: String, required:true,lowercase: true},
+    username: { type: String, required:true, trim:true},
+    firstname: { type:String, require: true, trim:true},
+    lastname: {type:String, require:true, trim:true},
+    email: { type: String, required:true,lowercase: true, trim:true},
     password: { type: String, required:true }
 });
 
@@ -14,7 +16,6 @@ UserSchema.pre('save', function(next){
 
     // generate a salt
     bcrypt.genSalt(SALT, function(error, salt) {
-        console.log(error);
         if (error) return next(error);
 
         // hash the password using our new salt
