@@ -11,14 +11,10 @@ let UserSchema = new mongoose.Schema({
 
 UserSchema.pre('save', function(next){
     var user = this;
-    // only hash the password if it has been modified (or is new)
     if (!this.isModified('password')) return next();
 
-    // generate a salt
     bcrypt.genSalt(SALT, function(error, salt) {
         if (error) return next(error);
-
-        // hash the password using our new salt
         bcrypt.hash(user.password, salt, function(error, hash) {
             if (error) return next(error);
             user.password = hash;

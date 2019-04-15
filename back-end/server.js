@@ -1,4 +1,5 @@
 
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const tweetRoute = require('./src/routes/tweet');
@@ -7,17 +8,18 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const mongoose = require('./lib/connection');
 const jwt = require('jsonwebtoken');
-
-app.set('secretKey', 'nodeRestApi');
+app.set('secretKey', process.env.JWT_SECRET);
 mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app.use(bodyParser.json());
-app.use(tweetRoute, validateUser, tweetRoute);
-app.use(userRoute);
-app.use(express.static('public'));
+
+app.use('/users',userRoute);
+app.use('/tweets', validateUser, tweetRoute);
 
 function validateUser(req, res, next) {
+    console.log('verifying...,');
     jwt.verify(req.headers['x-access-token'], req.app.get('secretKey'), function(err, decoded) {
+        console.log("decoded" + decoded.id);
       if (err) {
         res.json({status:"error", message: err.message, data:null});
       }else{
@@ -26,6 +28,7 @@ function validateUser(req, res, next) {
         next();
       }
     });
+
   }
 //404 requests
 app.use(function(req,res) {

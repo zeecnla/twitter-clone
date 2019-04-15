@@ -4,8 +4,9 @@ const express = require('express');
 const router = express.Router();
 
 //create new tweet
-router.post('/tweet', tweetController.create);
-router.get('/tweets/like/:id', tweetController.incrementLike);
-router.get('/tweets/retweet/:id', tweetController.incrementRetweet);
+router.post('/', tweetController.create);
+router.get('/', tweetController.getAllTweets);
+router.get('/like/:id', tweetController.incrementLike);
+router.get('/retweet/:id', tweetController.incrementRetweet);
 
 module.exports = router;
