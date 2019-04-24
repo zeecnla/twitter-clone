@@ -1,14 +1,20 @@
+:root {
+  --main-color:#215F79;
+  --text-color:#fff;
+}
+
 .App {
   text-align: center;
   color:#fff;
   background-color: #282c34;
-  min-height: 100vh;
+  height:100%;
+  min-height: 100%;
   font-size: calc(10px + 2vmin);
   text-align: center;
 }
 
 .container {
-  width:80vh;
+  width:80%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -16,3 +22,4 @@
   text-align: center;
   margin:0 auto;
 }
+

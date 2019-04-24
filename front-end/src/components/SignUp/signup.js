@@ -3,20 +3,33 @@ import './signup.css';
 import { Link } from 'react-router-dom'
 
 
-const SignUp =()=> (
-    <div>
-        <h2>Sign Up!</h2>
-        <form>
-            <input placeholder="First Name"/>
-            <input placeholder="Last Name"/>
-            <input placeholder="Email"/>
-            <input placeholder="Password"/>
-        </form>
-        <p>Already have an accoun? <Link to="/login">Login</Link></p>
-    </div>
-    
-);
+export default class SignUp extends React.Component {
 
-export default SignUp
+    constructor (){
+        super();
+        this.submit = this.submit.bind(this);
+        
+    }
 
+    submit(event){
+        console.log("submitted");
+        event.preventDefault();
+    }
 
+    render() {
+
+    return(
+        <div className="signup">
+            <h2>Sign Up!</h2>
+            <form onSubmit={this.submit}>
+                <input type="text" placeholder="First Name" required/>
+                <input type="text" placeholder="Last Name" required/>
+                <input type="email" placeholder="Email" required/>
+                <input type="password" placeholder="Password" required/>
+                <input id="submit" type="submit"/>
+            </form>
+            <p>Already have an account? <Link to="/login">Login</Link></p>
+        </div>
+        )
+    }
+}
