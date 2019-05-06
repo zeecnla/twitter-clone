@@ -6,11 +6,8 @@ const tweetRoute = require('./src/routes/tweet');
 const userRoute = require('./src/routes/user');
 const path = require('path');
 const bodyParser = require('body-parser');
-const mongoose = require('./lib/connection');
 const jwt = require('jsonwebtoken');
 app.set('secretKey', process.env.JWT_SECRET);
-mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection error:'));
-
 app.use(bodyParser.json());
 
 app.use('/users',userRoute);
@@ -18,13 +15,14 @@ app.use('/tweets', validateUser, tweetRoute);
 
 function validateUser(req, res, next) {
     console.log('verifying...,');
-    jwt.verify(req.headers['x-access-token'], req.app.get('secretKey'), function(err, decoded) {
-        console.log("decoded" + decoded.id);
+    jwt.verify(req.headers['x-access-token'], process.env.JWT_SECRET, function(err, decoded) {
+        console.log("decoded" + decoded.email);
       if (err) {
         res.json({status:"error", message: err.message, data:null});
       }else{
         // add user id to request
-        req.body.userId = decoded.id;
+        console.log(decoded);
+        req.body.email = decoded.email;
         next();
       }
     });

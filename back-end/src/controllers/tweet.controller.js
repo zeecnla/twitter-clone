@@ -1,75 +1,65 @@
-const tweetModel = require('../models/tweets.model');
 
-module.exports = {
-    create: function (req, res, next) {
-        console.log('creating tweet...');
-        console.log(req.body.userId);
-        const tweet = new tweetModel({
-            userId: req.body.userId,
-            context: req.body.context,
-            likes: 0,
-            retweets: 0
-        });
-        tweet.save(function (error, result) {
-            if (error){
-                next(error);
-            }else{
-                res.json({
-                    status: "success",
-                    message: "tweet added",
-                    data: null
-                });
-            }
-        });
-    },
-    incrementLike: function (req, res, next) {
-        const id = req.params.id;
-        tweetModel.findByIdAndUpdate(id, {
-            $inc: {
-                likes: 1
-            }
-        }, function (error, tweet) {
-            if (error){
-                next(error);
-            }else{
-                res.json({
-                    status: "success",
-                    message: "liked increased",
-                    data: null
-                });
-            }
-        });
-    },
-    incrementRetweet: function (req, res, next) {
-        const id = req.params.id;
-        tweetModel.findByIdAndUpdate(id, {
-            $inc: {
-                retweets: 1
-            }
-        }, function (error, tweet) {
-            if (error){
-                next(error);
-            }else{
-                res.json({
-                    status: "success",
-                    message: "liked increased",
-                    data: null
-                });
-            }
-        });
-    },
-    getAllTweets: function(req,res,next){
-        tweetModel.find({ }, function (error, user) {
-            
-            if (error){
-                next(error);
-            }else{
-                res.json({
-                    status: "success",
-                    message: "found all tweets",
-                    data: user
-                });
-            }
-        });
-    }
+import db from '../../lib/lowdb';
+const shortid = require('shortid')
+export function create (req, res, next) {
+    console.log('creating tweet...');
+    console.log(req.body.userId);
+    db.get('tweets')
+    .push({
+        id: shortid.generate(),
+        date: Date.now(),
+        userId: req.body.email,
+        context: req.body.context,
+        likes: 0,
+        retweets: 0
+    })
+    .write();
+    res.json({
+        status: "success",
+        message: "tweet added",
+        data: null
+    })
+    
+}
+export function incrementLike (req, res, next) {
+    const id = req.params.id;
+
+    console.log("incrementing like");
+    db.get('tweets')
+    .find({ id: id })
+    .update('likes', n => n+1)
+    .write();
+    
+    res.json({
+        status: "success",
+        message: "liked increased",
+        data: null
+    });
+}
+export function incrementRetweet(req, res, next) {
+    const id = req.params.id;
+
+    console.log("incrementing retweet");
+    db.get('tweets')
+    .find({ id: id })
+    .update('retweets', n => n+1)
+    .write();
+    
+    res.json({
+        status: "success",
+        message: "retweet increased",
+        data: null
+    });
+}
+
+export function allTweets(req, res, next) {
+    
+
+    const tweets = db.get('tweets').value()
+    
+    res.json({
+        status: "success",
+        message: "all tweets",
+        data: tweets
+    });
 }

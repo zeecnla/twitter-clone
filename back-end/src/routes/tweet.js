@@ -1,12 +1,12 @@
 
-const tweetController = require('../controllers/tweet.controller');
-const express = require('express');
-const router = express.Router();
+import { create, incrementLike, incrementRetweet, allTweets } from '../controllers/tweet.controller';
+import { Router } from 'express';
+const router = Router();
 
 //create new tweet
-router.post('/', tweetController.create);
-router.get('/', tweetController.getAllTweets);
-router.get('/like/:id', tweetController.incrementLike);
-router.get('/retweet/:id', tweetController.incrementRetweet);
+router.post('/', create);
+router.get('/', allTweets)
+router.get('/like/:id', incrementLike);
+router.get('/retweet/:id', incrementRetweet);
 
 module.exports = router;

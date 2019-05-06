@@ -1,0 +1,28 @@
+{
+  "tweets": [
+    {
+      "id": "TNuGls8YR",
+      "date": 1557104167859,
+      "userId": "skeleton@email.com",
+      "context": "Supernatural is awesome",
+      "likes": 2,
+      "retweets": 0
+    }
+  ],
+  "users": [
+    {
+      "username": "skeleton",
+      "firstname": "juice",
+      "lastname": "jazard",
+      "email": "skeleton@email.com",
+      "password": "$2b$10$Sy3x.JOwcWVhqwADJwWvyuzTKNq0SdpMMhcesa3vDKHaOL0fJWQXu"
+    },
+    {
+      "username": "skeleton",
+      "firstname": "juice",
+      "lastname": "jazard",
+      "email": "skeleton10@email.com",
+      "password": "$2b$10$kepywatnCohfpHt9F0HvO.gV9kkY.we64pv0wEc2CM.cGxABEWerq"
+    }
+  ]
+}

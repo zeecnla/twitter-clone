@@ -4,7 +4,7 @@
   "description": "The backend for my twitter clone",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon -r esm server.js"
+    "dev": "nodemon -r esm server.js --ignore db.json"
   },
   "author": "cesar melchor",
   "license": "ISC",
@@ -16,7 +16,8 @@
     "esm": "^3.2.22",
     "express": "^4.16.4",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.5.0",
+    "lowdb": "^1.0.0",
+    "shortid": "^2.2.14",
     "socket.io": "^2.2.0"
   },
   "devDependencies": {
