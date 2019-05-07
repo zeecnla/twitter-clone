@@ -1,6 +1,6 @@
 import React from 'react';
 import './signup.css';
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 
 export default class SignUp extends React.Component {
@@ -12,7 +12,8 @@ export default class SignUp extends React.Component {
             firstname: '',
             lastname: '',
             email: '',
-            password:''
+            password:'',
+            redirect:false
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChangeUserName = this.handleChangeUserName.bind(this);
@@ -48,15 +49,15 @@ export default class SignUp extends React.Component {
                 console.log(this.state);
                 const data = this.state;
                 fetch(`http://localhost:2093/users/register`, {
-                    method: "POST", 
-                    mode: "no-cors",
+                    method: "POST",
                     headers: {
                         "Content-Type": "application/json",
                         "Access-Control-Allow-Origin": "*"
                     },
                     body: JSON.stringify(this.state)
                 })
-                .then(response=> console.log(response))
+                .then(res => res.json())
+                .then(response => this.setState({redirect: response.status}))
                 .catch(error => console.error('Error:', error));
                 
             }
@@ -64,6 +65,10 @@ export default class SignUp extends React.Component {
     }
 
     render() {
+
+        if(this.state.redirect){
+            return <Redirect to="/login"/>;
+        }
 
     return(
         <div className="signup">

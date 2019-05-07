@@ -7,8 +7,26 @@ import Tweet from '../Tweet/Tweet'
 
 class Feed extends Component {
 
+    constructor(){
+        super();
+
+        this.state = {
+            tweets:[]
+        }
+    }
+
     componentDidMount(){
-        //fetch the suers following here
+        fetch(`http://localhost:2093/tweets/`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*"
+            }
+        })
+        .then(res => res.json())
+        .then(response => console.log(response))
+        .catch(error => console.error('Error:', error));
+            
     }
     render() {
 
