@@ -16,37 +16,26 @@ class Feed extends Component {
     }
 
     componentDidMount(){
+
+        const token = localStorage.getItem('token');
         fetch(`http://localhost:2093/tweets/`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*"
+                "Access-Control-Allow-Origin": "*",
+                'x-access-token': token
             }
         })
         .then(res => res.json())
-        .then(response => console.log(response))
+        .then(response =>  this.setState({tweets: response.data}))
         .catch(error => console.error('Error:', error));
             
     }
     render() {
 
-        const data = [
-            {
-                image:'',
-                tweet:"Hello friends!!"
-            },
-            {
-                image:'',
-                tweet:"i love cats!"
-            },
-            {
-                image:'',
-                tweet:"we are going to dinseyland!!"
-            }
-        ]
         return (
             <div className="feed">
-                {data.map((tweetObject, index)=> <Tweet image={tweetObject.image} tweet={tweetObject.tweet} key={index} />)}
+                {this.state.tweets.map((tweet, index)=> <Tweet id={tweet.id} date={tweet.date} likes={tweet.likes} retweets={tweet.retweets} user={tweet.userId} context={tweet.context} key={index} />)}
             </div>
         );
     }

@@ -3,12 +3,16 @@ import './Tweet.css';
 
 
 
-const Tweet =({image, tweet})=> (
+const Tweet =({context, date, likes, retweets, user})=> (
     <div className="tweet">
-        <img src={image} alt="avatar"/>
         <div className="tweet__body">
-            <p className="tweet_message">{tweet}</p>
-            <span className="tweet__actions">Action components</span> 
+            <p>{user}</p>
+            <p className="tweet_message">{context}</p>
+            
+            <ul>
+                <li>likes <span>{likes}</span></li>
+                <li>retweets <span>{retweets}</span></li>
+            </ul> 
         </div>
     </div>
 );

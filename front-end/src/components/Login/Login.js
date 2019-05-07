@@ -33,7 +33,11 @@ export default class Login extends React.Component {
                     body: JSON.stringify(this.state)
                 })
                 .then(res => res.json())
-                .then(response => this.setState({redirect: response.status}))
+                .then(response => {
+                    console.log(response);
+                    this.setState({redirect: response.status});
+                    localStorage.setItem('token', response.data.token)
+                })
                 .catch(error => console.error('Error:', error));
             }
             event.preventDefault();
