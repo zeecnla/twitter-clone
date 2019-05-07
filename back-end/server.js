@@ -2,13 +2,18 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
 const tweetRoute = require('./src/routes/tweet');
 const userRoute = require('./src/routes/user');
 const path = require('path');
-const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
-app.set('secretKey', process.env.JWT_SECRET);
+const cors = require('cors');
+
 app.use(bodyParser.json());
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.set('secretKey', process.env.JWT_SECRET);
+app.use(cors());
 
 app.use('/users',userRoute);
 app.use('/tweets', validateUser, tweetRoute);

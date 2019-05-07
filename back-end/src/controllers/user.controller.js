@@ -12,16 +12,17 @@ export function create(req, res, next) {
         if (err) console.log(err);
         bcrypt.hash(prePassword, salt, function (err, hash) {
             if (err) console.log(err);
-            
             //in order to prevent multiples 
             //ill check if that username already exists
             if(db.get('users').find({email:req.body.email}).value()){
+                console.log('value found');
                 res.json({
                     status: "failed",
                     message: "user already exists",
                     data: null
                 })
             }else{
+                console.log('wrigint to json');
                 db.get('users')
                 .push({
                     username: req.body.username,
@@ -36,7 +37,7 @@ export function create(req, res, next) {
                     status: "success",
                     message: "user added",
                     data: null
-                })
+                });
             }
         });
     });

@@ -23,6 +23,20 @@
       "lastname": "jazard",
       "email": "skeleton10@email.com",
       "password": "$2b$10$kepywatnCohfpHt9F0HvO.gV9kkY.we64pv0wEc2CM.cGxABEWerq"
+    },
+    {
+      "username": "nike",
+      "firstname": "nike",
+      "lastname": "nike",
+      "email": "nike@email.com",
+      "password": "$2b$10$qRzwoBjSV3ffnLvLKbP8guCr6XqyAwCRTxWygFDVT20GWYTPmIbk6"
+    },
+    {
+      "username": "dean",
+      "firstname": "dean",
+      "lastname": "dean",
+      "email": "dean@email.com",
+      "password": "$2b$10$G2ORwDCN835ZsN8HN/d6veXUvcxGL7uRIXz9xhOjzTg01et2XFWvu"
     }
   ]
 }
