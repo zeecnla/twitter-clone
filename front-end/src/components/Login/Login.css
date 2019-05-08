@@ -2,11 +2,16 @@
 .login {
     background: var(--main-color);
     color: var(--text-color);
+    display: -webkit-flex;
     display: flex;
+    -webkit-flex-direction: column;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    /* -webkit-justify-content: center; */
+    /* justify-content: center; */
+    -webkit-align-items: center;
+    /* align-items: center; */
     text-align: center;
+    height: 100%;
 }
 .login form {
     width: 50%;

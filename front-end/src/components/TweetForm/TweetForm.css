@@ -1,0 +1,26 @@
+
+.tweet__form {
+    border: 1px solid #fff;
+    width:100%;
+}
+
+.tweet__form form textarea {
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    margin: 20px;
+    padding: 10px;
+    resize: none;
+    width:80%;
+}
+.tweet__form form input {
+    width: 100px;
+    height: 100px;
+    display: block;
+    /* text-align: right; */
+    float: right;
+    /* display: inline-block; */
+    /* position: absolute; */
+    margin: 0 30px 0 0;
+    padding: 0 20px 0 0;
+}

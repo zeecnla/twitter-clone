@@ -7,6 +7,22 @@
       "context": "Supernatural is awesome",
       "likes": 2,
       "retweets": 0
+    },
+    {
+      "id": "2FgTUwOED",
+      "date": 1557299522020,
+      "userId": "dean@email.com",
+      "context": "asdfasdf",
+      "likes": 0,
+      "retweets": 0
+    },
+    {
+      "id": "Z4mu9-K12",
+      "date": 1557301017540,
+      "userId": "dean@email.com",
+      "context": "bruh",
+      "likes": 0,
+      "retweets": 0
     }
   ],
   "users": [

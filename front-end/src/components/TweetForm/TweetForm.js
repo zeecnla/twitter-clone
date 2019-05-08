@@ -1,48 +1,27 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 import './TweetForm.css';
 
-import avatar from '../../assets/avatar.jpg'
 
 class TweetForm extends Component {
     constructor(props) {
         super(props);
-        
-        this.state = {
-            value: ""
-        };
         this.submitTweet = this.submitTweet.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
     handleChange(event) {
-        this.setState({value: event.target.value});
+      this.props.onContextChange(event);
     }
     submitTweet = event => {
-        event.preventDefault();
-        const newTweet = {
-          tweet: this.state.value,
-          user: 'zeec'
-        }
-        axios.post(`localhost:2093/addPost`, {newTweet} )
-          .then(res => {
-            const persons = res.data;
-            this.setState({ persons });
-          })
-
-        this.setState({value: ""});
+      this.props.onSubmitTweet(event);
+      
     }
   render() {
     return (
-            <div className="tweet">
-              <img style={{
-                width:`100px`,
-                height:`100px`
-              }}src={avatar} alt="avatar"/>
+            <div className="tweet__form">
               <form onSubmit={this.submitTweet}>
-                  <label>
-                      Tweet:
-                  <input type="text" value={this.state.value} onChange={this.handleChange}/>
-                  </label>
+                  <textarea placeholder="Message the world!" onChange={this.handleChange}></textarea>
                   <input type="submit" value="Submit" />
               </form>
             </div>
@@ -50,4 +29,4 @@ class TweetForm extends Component {
   }
 }
 
-export default TweetForm;
+export default withRouter(TweetForm);
