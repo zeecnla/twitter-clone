@@ -13,17 +13,49 @@
     text-align: center;
     height: 100%;
 }
-.login form {
-    width: 50%;
+ .login {
+    background: var(--main-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
 }
+
+.login form {
+    display: flex;
+    flex-direction: column;
+}
+
 .login form input {
-    width:100%;
+    width: 250px;
     height: 30px;
     border: none;
     border-radius: 10px;
     margin: 10px;
     padding: 10px;
+    font-size: 1em;
 }
+
 .login form #submit {
-    width:100%;
+    /* width: 100%; */
+    margin: 20px auto;
+    color: white;
+    background: #033c54;
+    border: 0;
+    /* border-radius: 0px; */
+    height: 50px;
+    cursor: pointer;
 }
+
+.login a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.login a :hover {
+    text-decoration: underline;
+}
+

@@ -21,7 +21,7 @@ export default class SignUp extends React.Component {
         this.handleChangeLastName = this.handleChangeLastName.bind(this);
         this.handleChangeEmail = this.handleChangeEmail.bind(this);
         this.handleChangePassword = this.handleChangePassword.bind(this);
-        
+
     }
     handleChangeUserName(event) {
         this.setState({username:event.target.value});
@@ -40,7 +40,6 @@ export default class SignUp extends React.Component {
     }
     //call api here
     handleSubmit(event){
-        console.log('submitting');
         if( this.state.username     &&
             this.state.firstname    &&
             this.state.lastname     &&
@@ -59,7 +58,7 @@ export default class SignUp extends React.Component {
                 .then(res => res.json())
                 .then(response => this.setState({redirect: response.status}))
                 .catch(error => console.error('Error:', error));
-                
+
             }
         event.preventDefault();
     }

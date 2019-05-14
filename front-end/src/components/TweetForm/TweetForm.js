@@ -22,7 +22,7 @@ class TweetForm extends Component {
             <div className="tweet__form">
               <form onSubmit={this.submitTweet}>
                   <textarea placeholder="Message the world!" onChange={this.handleChange}></textarea>
-                  <input type="submit" value="Submit" />
+                  <input type="submit" value="Tweet" />
               </form>
             </div>
     );

@@ -2,7 +2,7 @@ import React from 'react';
 import './Login.css';
 import { Link, Redirect } from 'react-router-dom';
 
-//TODO: save the token on the local storage 
+//TODO: save the token on the local storage
 // and prevent access to home page if the user
 //does not have a valid token
 
@@ -34,7 +34,6 @@ export default class Login extends React.Component {
                 })
                 .then(res => res.json())
                 .then(response => {
-                    console.log(response);
                     this.setState({redirect: response.status});
                     localStorage.setItem('token', response.data.token)
                 })
@@ -49,7 +48,7 @@ export default class Login extends React.Component {
     handleChangePassword(event){
         this.setState({password:event.target.value});
     }
-    
+
     render(){
         if(this.state.redirect){
             return <Redirect to="/home"/>;
@@ -61,7 +60,7 @@ export default class Login extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     <input type="email" value={this.state.email} onChange={this.handleChangeEmail} placeholder="Email"/>
                     <input type="password" value={this.state.password} onChange={this.handleChangePassword}placeholder="Password"/>
-                    <input type="submit" />
+                    <input id="submit" type="submit" />
                 </form>
                 <p>Don't have an account? <Link to="/">Signup</Link></p>
             </div>

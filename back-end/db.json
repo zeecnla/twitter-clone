@@ -5,8 +5,8 @@
       "date": 1557104167859,
       "userId": "skeleton@email.com",
       "context": "Supernatural is awesome",
-      "likes": 2,
-      "retweets": 0
+      "likes": 27,
+      "retweets": 10
     },
     {
       "id": "2FgTUwOED",
@@ -14,13 +14,37 @@
       "userId": "dean@email.com",
       "context": "asdfasdf",
       "likes": 0,
-      "retweets": 0
+      "retweets": 2
     },
     {
       "id": "Z4mu9-K12",
       "date": 1557301017540,
       "userId": "dean@email.com",
       "context": "bruh",
+      "likes": 0,
+      "retweets": 1
+    },
+    {
+      "id": "jEfdzMDjD",
+      "date": 1557721415684,
+      "userId": "dean@email.com",
+      "context": "testing the tweets",
+      "likes": 0,
+      "retweets": 0
+    },
+    {
+      "id": "Kz7BJjAyK",
+      "date": 1557723606398,
+      "userId": "dean@email.com",
+      "context": "hugo is trash",
+      "likes": 0,
+      "retweets": 0
+    },
+    {
+      "id": "XlZQjMZBZ",
+      "date": 1557730649343,
+      "userId": "dean@email.com",
+      "context": "fearless la",
       "likes": 0,
       "retweets": 0
     }

@@ -6,20 +6,21 @@ import { withRouter } from 'react-router-dom'
 
 
 
-class Feed extends Component {
-
-    constructor(props){
-        super(props);
-
-    }
-    render() {
-
-        return (
-            <div className="feed">
-                {this.props.tweets.map((tweet, index)=> <Tweet id={tweet.id} date={tweet.date} likes={tweet.likes} retweets={tweet.retweets} user={tweet.userId} context={tweet.context} key={index} />)}
-            </div>
-        );
-    }
+const Feed = ({tweets, handleLike, handleRetweet }) => {
+    return (
+        <div className="feed">
+            {tweets.map((tweet, index)=> <Tweet
+                handleLike={handleLike}
+                handleRetweet={handleRetweet}
+                id={tweet.id}
+                date={tweet.date}
+                likes={tweet.likes}
+                retweets={tweet.retweets}
+                user={tweet.userId}
+                context={tweet.context}
+                key={index} />)}
+        </div>
+    );
 }
 
 export default withRouter(Feed);
